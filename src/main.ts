@@ -15,6 +15,10 @@ import VuePictureSwipe from 'vue3-picture-swipe'
 import App from './App.vue'
 import router from './router'
 
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import de from 'dayjs/locale/de'
+
 const vuetify = createVuetify({
   components,
   directives,
@@ -26,6 +30,9 @@ const vuetify = createVuetify({
     },
   },
 })
+
+dayjs.extend(relativeTime)
+dayjs.locale(de)
 
 const app = createApp(App).use(vuetify).component('vue-picture-swipe', VuePictureSwipe)
 

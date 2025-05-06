@@ -1,3 +1,5 @@
+import type { ProcessItemTypeEnum } from './process-item-enum'
+
 /**
  * Process step items
  */
@@ -5,7 +7,7 @@ export interface ProcessItem {
   /**
    * Enum of different process types
    */
-  type: string
+  type: ProcessItemTypeEnum
 
   /**
    * The title of the process step
@@ -41,4 +43,9 @@ export interface ProcessItem {
    * Optional: External reference id, can be from a 3rd party system or internal note for the process step
    */
   referenceId?: string
+
+  /**
+   * Optional: count of damages being reported at once
+   */
+  amount?: number
 }
