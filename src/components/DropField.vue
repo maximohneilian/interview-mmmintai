@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+const uploader = ref<HTMLInputElement | null>(null)
+
 const emit = defineEmits(['drop'])
 const isDragging = ref(false)
 const color = ref('indigo')
@@ -22,6 +24,12 @@ function dragLeave() {
 
 function onFileInput(event: Event) {
   const input = event.target as HTMLInputElement
+
+  if(!input.files) {
+    console.warn("No file list")
+    return;
+  }
+
   handleFileList(input.files)
 }
 
@@ -71,7 +79,7 @@ function handleFileList(files: FileList) {
 
     <v-card-actions>
       <v-spacer />
-      <v-btn variant="text" @click="$refs.uploader.click()">
+      <v-btn variant="text"  @click="uploader?.click()">
         {{ btnText }}
       </v-btn>
     </v-card-actions>
